@@ -8,6 +8,15 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: mediumpurple 5px solid;
+    background: lightgrey;
 
+
+}
+
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
 }
