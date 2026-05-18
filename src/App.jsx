@@ -3,6 +3,7 @@ import worldMap from "./assets/world_map.png"
 import axios from "axios";
 import {useState} from "react";
 import {regionColor} from "./helpers/RegionColor.jsx";
+import {formatPopulation} from "./helpers/FormatPopulation.jsx";
 
 function App() {
 
@@ -12,14 +13,17 @@ function App() {
     const [error, setError] = useState('')
 
     async function searchCountry() {
+        setError('');
+        setSearchResult([]);
+
         try {
-            const response = await axios.get(`https://restcountries.com/v3.1/name/${search}?fields=name,flags,population,capital,region,subregion,borders,domain`)
+            const response = await axios.get(`https://restcountries.com/v3.1/name/${search}?fields=name,flags,population,capital,region,subregion,borders,domains`)
 
             setSearchResult(response.data)
 
         } catch (e) {
             console.error(e)
-            setError(`${searchResult} bestaat niet. Probeer het opnieuw.`);
+            setError(`${search} bestaat niet. Probeer het opnieuw.`);
         }
     }
 
@@ -80,10 +84,13 @@ function App() {
                             {c.name.common + " is situated in " + c.subregion +
                                 " and the capital is " + (c.capital ? c.capital[0] : "N/A") + "" }
                             </p>
-                        <p>{"It has a population of " + c.population + " million people and it borders with " + c.borders + " neighboring countries" }</p>
-                       <p>{"Websites can be found on " + c.domain + " domains"}</p>
-                        {/*{error && <span id="error-message">{error}</span>}*/}
+                        <p>{"It has a population of " + formatPopulation(c.population) + " people and it borders with " + c.borders + " neighboring countries" }</p>
+
+                        {/*Ik heb gecht geen idee hoe ik die domains goed moet krijgen, dus ja, deze klopt idd niet*/}
+                        <p>{"Websites can be found on " + (c.domains?.join(", ") || "N/A") + " domains"}</p>
+
                     </li>)}
+                    {error && <span id="error-message">{error}</span>}
                 </ul>
             </div>
         </>
