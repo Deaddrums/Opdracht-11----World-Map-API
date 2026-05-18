@@ -1,0 +1,37 @@
+button {
+    height: 50px;
+    width: 100px;
+}
+
+.countryLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.countrySearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.countrySearch li {
+    list-style: none;
+}
+
+.countrySearch ul {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
