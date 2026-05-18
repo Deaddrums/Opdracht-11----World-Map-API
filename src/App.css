@@ -8,9 +8,19 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background: lightgrey;
+    border-radius: 5px;
 
 
+}
+
+.countrySearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    gap: 10px;
+    margin: 0 auto;
 }
 
 
